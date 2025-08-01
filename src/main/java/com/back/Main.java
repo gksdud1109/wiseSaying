@@ -1,10 +1,11 @@
 package com.back;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
+      new wiseSayingApp().run();
+    }
+}
+/*
         Scanner sc = new Scanner(System.in);
         ArrayList<wiseSay> db = new ArrayList<>();
         int lastId = 0;
@@ -30,7 +31,7 @@ public class Main {
                 System.out.println("번호 / 작가 / 명언\n------------");
                 for (int i = db.size() - 1; i >= 0; i--) {
                     wiseSay w = db.get(i);
-                    System.out.println(w.id + " / " + w.author + " / " + w.content);
+                    System.out.println(w.getId() + " / " + w.getAuthor() + " / " + w.getContent());
                 }
             }
             // 삭제
@@ -38,7 +39,7 @@ public class Main {
                 int id = Integer.parseInt(nextCmd.substring((6)));
                 boolean found = false;
                 for (int i = 0; i < db.size(); i++) {
-                    if (db.get(i).id == id) {
+                    if (db.get(i).getId() == id) {
                         db.remove(i);
                         System.out.println(id + "번 명언이 삭제되었습니다.");
                         found = true;
@@ -55,7 +56,7 @@ public class Main {
                 int id = Integer.parseInt(nextCmd.substring((6)));
                 wiseSay target = null;
                 for (wiseSay w : db) {
-                    if (w.id == id) {
+                    if (w.getId() == id) {
                         target = w;
                         break;
                     }
@@ -64,17 +65,16 @@ public class Main {
                 if (target == null) System.out.println(id + "번 명언은 존재하지 않습니다.");
                     // 명언 수정
                 else {
-                    System.out.println("명언(기존) : " + target.content);
+                    System.out.println("명언(기존) : " + target.getContent());
                     System.out.print("명언 : ");
-                    target.content = sc.nextLine();
+                    target.getContent(sc.nextLine());
 
-                    System.out.println("작가(기존) : " + target.author);
+                    System.out.println("작가(기존) : " + target.getAuthor());
                     System.out.print("작가 : ");
-                    target.author = sc.nextLine();
+                    target.setAuthor(sc.nextLine());
                 }
             } else {
                 System.out.println("알 수 없는 명령입니다.");
             }
         }
-    }
-}
+ */
