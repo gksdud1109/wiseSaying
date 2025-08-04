@@ -2,46 +2,10 @@ package com.back;
 
 import java.util.ArrayList;
 
-public class wiseSayingRepository {
-    private ArrayList<wiseSay> db = new ArrayList<>();
-    private int lastId = 0;
-
-    public wiseSay save(String content, String author) {
-        lastId++;
-        wiseSay ws = new wiseSay(lastId, author, content);
-        db.add(ws);
-        return ws;
-    }
-
-    public ArrayList<wiseSay> findAll() {
-        return new ArrayList<>(db);
-    }
-
-    public wiseSay findById(int id) {
-        for(wiseSay ws : db){
-            if(ws.getId() == id)
-                return ws;
-        }
-        return null;
-    }
-
-    public boolean removeById(int id) {
-        for (int i = 0; i < db.size(); i++) {
-            if (db.get(i).getId() == id) {
-                db.remove(i);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public wiseSay update(int id, wiseSay target) {
-        for (int i = 0; i < db.size(); i++) {
-            if (db.get(i).getId() == id) {
-                db.set(i, target);
-                return target;
-            }
-        }
-        return null;
-    }
+public interface wiseSayingRepository {
+    wiseSay save(String content, String author);
+    ArrayList<wiseSay> findAll();
+    wiseSay findById(int id);
+    boolean removeById(int id);
+    wiseSay update(int id, wiseSay target);
 }

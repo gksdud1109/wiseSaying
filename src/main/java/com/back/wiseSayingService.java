@@ -3,7 +3,11 @@ package com.back;
 import java.util.ArrayList;
 
 public class wiseSayingService {
-    private wiseSayingRepository repository = new wiseSayingRepository();
+    private wiseSayingRepository repository;
+
+    public wiseSayingService(wiseSayingRepository repository){
+        this.repository = repository;
+    }
 
     public wiseSay write(String content, String author) {
         return repository.save(content, author);
