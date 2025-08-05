@@ -28,6 +28,10 @@ public class wiseSayingService {
     public wiseSay update(int id, wiseSay target) {
         return repository.update(id, target);
     }
+
+    public boolean databuild() {
+        return repository.databuild();
+    }
 }
 /*
 

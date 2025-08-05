@@ -88,6 +88,48 @@ public class wiseSayingFileRepository implements wiseSayingRepository {
         }
     }
 
+    @Override
+    public boolean databuild() {
+        ArrayList<wiseSay> wiseList = new ArrayList<>();
+        File dir = new File(FOLDER);
+        File[] files = dir.listFiles((d, name) -> name.endsWith(".json") && !name.equals("lastId.txt")&& !name.equals("data.json"));
+        if(files == null) return false;
+        for (File f : files){
+            try{
+                wiseSay ws = getWiseSay(f);
+                if(ws != null) wiseList.add(ws);
+            } catch(IOException e) {
+                return false;
+            }
+        }
+        wiseList.sort((a, b) -> Integer.compare(a.getId(), b.getId()));
+
+        File out = new File(FOLDER + "data.json");
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(out))) {
+            writer.write("[\n");
+            for (int i = 0; i < wiseList.size(); i++) {
+                wiseSay ws = wiseList.get(i);
+                writer.write("  {\n");
+                writer.write("    \"id\": " + ws.getId() + ",\n");
+                writer.write("    \"content\": \"" + escape(ws.getContent()) + "\",\n");
+                writer.write("    \"author\": \"" + escape(ws.getAuthor()) + "\"\n");
+                writer.write("  }");
+
+                if (i < wiseList.size() - 1) {
+                    writer.write(",");
+                }
+                writer.write("\n");
+            }
+            writer.write("]");
+        } catch (IOException e) {
+            System.err.println("data.json 저장 실패");
+            return false;
+        }
+
+        return true;
+    }
+
     private int getLastId() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(FOLDER + "lastId.txt"))) {
             return Integer.parseInt(reader.readLine().trim());
@@ -144,19 +186,24 @@ public class wiseSayingFileRepository implements wiseSayingRepository {
 
     private String cleanJsonString(String raw) {
         raw = raw.trim();
-        // 앞뒤 쌍따옴표 제거
-        if (raw.startsWith("\"") && raw.endsWith("\"")) {
-            raw = raw.substring(1, raw.length() - 1);
-        }
+
         // 마지막에 쉼표가 있다면 제거
         if (raw.endsWith(",")) {
             raw = raw.substring(0, raw.length() - 1);
         }
+
         // 이스케이프 문자 처리
         raw = raw.replace("\\\"", "\"").replace("\\\\", "\\");
 
+        // 앞뒤 쌍따옴표 제거
+        if (raw.startsWith("\"") && raw.endsWith("\"")) {
+            raw = raw.substring(1, raw.length() - 1);
+        }
+
         return raw;
     }
+
+
 
     private String escape(String s) {
         return s.replace("\\", "\\\\").replace("\"", "\\\"");
