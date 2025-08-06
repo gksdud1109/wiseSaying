@@ -29,8 +29,8 @@ public class wiseSayingService {
         return repository.update(id, target);
     }
 
-    public boolean databuild() {
-        return repository.databuild();
+    public boolean dataBuild() {
+        return repository.dataBuild();
     }
 }
 /*

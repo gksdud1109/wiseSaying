@@ -46,7 +46,7 @@ public class wiseSayingArrayRepository implements wiseSayingRepository{
     }
     // 안만들었음
     @Override
-    public boolean databuild() {
+    public boolean dataBuild() {
         return false;
     }
 }

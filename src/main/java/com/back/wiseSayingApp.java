@@ -37,7 +37,7 @@ public class wiseSayingApp {
                 controller.update(id);
             }
             else if (nextCmd.equals("빌드")){
-                boolean result = controller.databuild();
+                boolean result = controller.dataBuild();
                 if(result) System.out.println("data.json 파일의 내용이 갱신되었습니다.");
                 else System.out.println("data.json 파일 갱신 실패ㅠㅠ");
             }

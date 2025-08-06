@@ -8,5 +8,5 @@ public interface wiseSayingRepository {
     wiseSay findById(int id);
     boolean removeById(int id);
     wiseSay update(int id, wiseSay target);
-    boolean databuild();
+    boolean dataBuild();
 }

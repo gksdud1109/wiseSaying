@@ -51,8 +51,8 @@ public class wiseSayingController {
         }
     }
     // data.json 파일로 빌드
-    public boolean databuild() {
-        return service.databuild();
+    public boolean dataBuild() {
+        return service.dataBuild();
 
     }
 }
