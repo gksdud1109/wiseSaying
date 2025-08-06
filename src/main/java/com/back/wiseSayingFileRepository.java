@@ -41,7 +41,7 @@ public class wiseSayingFileRepository implements wiseSayingRepository {
         ArrayList<wiseSay> list = new ArrayList<>();
         File dir = new File(jsonUtil.getFolder());
 
-        File[] files = dir.listFiles((d, name) -> name.endsWith(".json") && !name.equals("lastId.txt"));
+        File[] files = dir.listFiles((d, name) -> name.endsWith(".json") && !name.equals("lastId.txt") && !name.equals("data.json"));
         if (files != null) {
             for (File file : files) {
                 wiseSay ws = jsonUtil.getWiseSay(file);
