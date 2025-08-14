@@ -1,4 +1,7 @@
-package com.back;
+package com.back.domain.wiseSaying.repository;
+
+import com.back.domain.wiseSaying.entity.wiseSay;
+import com.back.standard.util.jsonUtil;
 
 import java.io.BufferedWriter;
 import java.io.File;

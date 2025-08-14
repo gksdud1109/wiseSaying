@@ -1,4 +1,7 @@
-package com.back;
+package com.back.domain.wiseSaying.service;
+
+import com.back.domain.wiseSaying.entity.wiseSay;
+import com.back.domain.wiseSaying.repository.wiseSayingRepository;
 
 import java.util.ArrayList;
 

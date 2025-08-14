@@ -1,4 +1,7 @@
-package com.back;
+package com.back.domain.wiseSaying.controller;
+
+import com.back.domain.wiseSaying.entity.wiseSay;
+import com.back.domain.wiseSaying.service.wiseSayingService;
 
 import java.util.Scanner;
 
