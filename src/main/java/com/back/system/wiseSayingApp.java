@@ -15,8 +15,6 @@ public class wiseSayingApp {
     }
 
     public void run(){
-        Scanner sc = new Scanner(System.in);
-
         // 시작
         System.out.println("== 명언 앱 ==");
 
